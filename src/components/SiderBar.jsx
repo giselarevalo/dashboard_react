@@ -1,54 +1,53 @@
+import { Link, useLocation } from "react-router-dom"
 
 export const SiderBar = () => {
-  return (
-    <ul className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-	
+	const location = useLocation();
+	console.log(location)
+
+	return (
+
+		<ul className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+
 			<a className="sidebar-brand d-flex align-items-center justify-content-center" href="/">
 				<div className="sidebar-brand-icon">
-					<img className="w-100" src="/images/logo-DH.png" alt="Digital House"/>
+					<img className="w-100" src="/images/logo-DH.png" alt="Digital House" />
 				</div>
 			</a>
 
-	
-			<hr className="sidebar-divider my-0"/>
 
-	
+			<hr className="sidebar-divider my-0" />
+
+
 			<li className="nav-item active">
 				<a className="nav-link" href="/">
 					<i className="fas fa-fw fa-tachometer-alt"></i>
 					<span>Dashboard - DH movies</span></a>
 			</li>
 
-	
-			<hr className="sidebar-divider"/>
 
-	
+			<hr className="sidebar-divider" />
+
+
 			<div className="sidebar-heading">Actions</div>
 
-	
-			<li className="nav-item">
-				<a className="nav-link collapsed" href="/">
-					<i className="fas fa-fw fa-folder"></i>
-					<span>Pages</span>
-				</a>
+
+			<li className={`nav-item ${location.pathname == '/'&& 'active'}`}>
+				<Link className="nav-link collapsed fs-4" to="/">
+					<i className="fas fa-fw fa-home"></i>
+					<span>Inicio</span>
+				</Link>
 			</li>
 
-	
-			<li className="nav-item">
-				<a className="nav-link" href="/">
-					<i className="fas fa-fw fa-chart-area"></i>
-					<span>Charts</span></a>
+
+			<li className={`nav-item ${location.pathname == '/movies'&& 'active'}`}>
+				<Link className="nav-link" to="/movies">
+					<i className="fas fa-fw fa-film"></i>
+					<span>Peliculas</span></Link>
 			</li>
 
-	
-			<li className="nav-item">
-				<a className="nav-link" href="/">
-					<i className="fas fa-fw fa-table"></i>
-					<span>Tables</span></a>
-			</li>
-
-      <hr className="sidebar-divider d-none d-md-block"/>
+			<hr className="sidebar-divider d-none d-md-block" />
 		</ul>
-  )
+	)
 }
